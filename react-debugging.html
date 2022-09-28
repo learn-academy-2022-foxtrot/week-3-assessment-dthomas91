@@ -64,23 +64,31 @@
         }
         // No need to change anything ABOVE this line ^
 
+// bug 1. was that there can only be one return <></> and everything else must be inside of that one. There were mutiple which caused and error.
+
+// bug 2. the onClick event for the button to draw a card had an empty {}. Therefore the code doesn't know what we wanted it to do when we clicked. I changed it to {drawCard}, (found in the line 38), now the code knows that when I click to button to draw another card.
+
+// bug 3. The onClick for the shuffle button was all lowercased. When I changed to to camelCase (onClick) the game worked as designed.
+
         return (
-          <h1>Draw a Card</h1>
-          <button onClick={}>
-            Click to Draw a Card
-          </button>
-          <button onclick={shuffle}>
-            Return Cards and Shuffle Deck
-          </button>
-          <div style={handStyles}>
-            {hand.map((card, index) => {
-              return (
-                <div style={cardStyles} key={index}>
-                  {card}
-                </div>
-              )
-            })}
-          </div>
+          <>
+            <h1>Draw a Card</h1>
+            <button onClick={drawCard}>
+              Click to Draw a Card
+            </button>
+            <button onClick={shuffle}>
+              Return Cards and Shuffle Deck
+            </button>
+            <div style={handStyles}>
+              {hand.map((card, index) => {
+                return (
+                  <div style={cardStyles} key={index}>
+                    {card}
+                  </div>
+                )
+              })}
+            </div>
+          </>
         )
       }
 
